@@ -1,0 +1,15 @@
+grep -iRI "ЧтоИскать" ГдеИскать
+adb shell dmesg > dmesg.log
+adb logcat *:E -> logcat.txt
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+rm -rf ~/Android/kernel/kernel-3.18.79_x5/out
+mkdir ~/Android/kernel/kernel-3.18.79_x5/out
+export ARCH=arm
+export SUBARCH=arm
+export CROSS_COMPILE=/home/nik-kst/Android/utility/gcc-linaro-6.4.1-2017.11-x86_64_arm-eabi/bin/arm-eabi-
+make clean
+make mrproper
+make O=out TARGET_ARCH=arm X5_bsp_defconfig
+make -j4 O=out TARGET_ARCH=arm
+
